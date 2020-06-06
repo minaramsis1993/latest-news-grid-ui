@@ -1,0 +1,12 @@
+<img
+  class="img-centered"
+  [src]="article['urlToImage']"
+  alt=""
+  (click)="navigateToDetails(article)"
+/>
+<div>
+  <div class="category">{{ article["author"] }}</div>
+  <h4>
+    {{ article["title"] }}
+  </h4>
+</div>

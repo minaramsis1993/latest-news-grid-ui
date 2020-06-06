@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<h2 id="news-title">Latest News</h2>
+<div class="news-grid" *ngIf="articles">
+  <div class="container">
+    <div class="flex-container">
+      <div class="flex-left">
+        <app-card-with-details
+          class="card"
+          [article]="articlesLeftUpFront[0]"
+          [articles]="articles"
+          [isWithDate]="false"
+          [isMain]="true"
+        ></app-card-with-details>
+        <app-card-with-details
+          class="card"
+          *ngFor="let article of articlesLeftUpFront.slice(1)"
+          [article]="article"
+          [articles]="articles"
+          [isWithDate]="false"
+        ></app-card-with-details>
+        <h3>Editor Picks</h3>
+        <div class="flex-within-grid">
+          <app-card-with-details
+            class="card"
+            *ngFor="let article of articlesRight"
+            [article]="article"
+            [articles]="articles"
+            [isWithDate]="false"
+          ></app-card-with-details>
+        </div>
+      </div>
+      <div class="flex-right">
+        <div class="cards-combined-grid">
+          <app-card
+            class="card"
+            *ngFor="let article of articlesRight"
+            [article]="article"
+            [articles]="articles"
+          ></app-card>
+        </div>
+        <app-most-popular></app-most-popular>
+        <app-news-letter></app-news-letter>
+        <app-social></app-social>
+      </div>
+    </div>
+    <hr class="hr-trending" />
+    <h3 class="trending">Trending</h3>
+    <div class="trending-grid">
+      <app-card-with-details
+        class="card"
+        *ngFor="let article of articlesLast4"
+        [article]="article"
+        [articles]="articles"
+        [isWithDate]="true"
+      ></app-card-with-details>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

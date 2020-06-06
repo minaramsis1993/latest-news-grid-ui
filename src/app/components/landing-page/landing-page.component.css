@@ -1,0 +1,9 @@
+.flex-left .card:nth-child(2) h2,
+.flex-left .card:nth-child(3) h2 {
+  font-size: 1rem;
+}
+
+.flex-left .card:nth-child(2) .desc,
+.flex-left .card:nth-child(3) .desc {
+  display: none;
+}

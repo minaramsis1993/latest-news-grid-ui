@@ -1,0 +1,33 @@
+<img
+  class="img-centered"
+  [src]="article['urlToImage']"
+  alt=""
+  (click)="navigateToDetails(article)"
+/>
+
+<div *ngIf="!isWithDate">
+  <div class="category">{{ article["author"] }}</div>
+  <div>
+    <h2 [ngStyle]="{ 'font-size': isMain ? '1.35rem' : '1.03rem' }">
+      {{ article["title"] }}
+    </h2>
+    <p class="desc" *ngIf="isMain">
+      {{ article["description"] }}
+    </p>
+  </div>
+</div>
+
+<div *ngIf="isWithDate">
+  <div class="content-with-date">
+    <div class="date">{{ article["publishedAt"] | date }}</div>
+    <h4>
+      {{ article["title"] }}
+    </h4>
+  </div>
+  <hr class="hr-between-content-with-date" />
+  <div class="content-with-date">
+    <h5 class="trending-desc">
+      {{ article["description"] }}
+    </h5>
+  </div>
+</div>

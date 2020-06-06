@@ -1,0 +1,112 @@
+<app-navbar></app-navbar>
+<div class="details" *ngIf="article">
+  <div class="container">
+    <div class="quote">
+      <h1>If You want to get rich, how would you do it?</h1>
+      <p class="quote-by">
+        By <span>{{ article["author"] }}</span> Published on May, 17th 2020
+      </p>
+    </div>
+    <hr />
+    <div class="details-grid">
+      <div class="left-shares">
+        <ul>
+          <li><span class="number">23</span> Shares</li>
+          <li>
+            <a href="http://gmail.com" target="_blank"
+              ><i class="fa fa-envelope"></i> Email</a
+            >
+          </li>
+          <li>
+            <a href="http://facebook.com" target="_blank"
+              ><i class="fab fa-facebook"></i> Facebook</a
+            >
+          </li>
+          <li>
+            <a href="http://twitter.com" target="_blank"
+              ><i class="fab fa-twitter"></i> Twitter</a
+            >
+          </li>
+          <li>
+            <a href="http://youtube.com" target="_blank"
+              ><i class="fab fa-youtube"></i> Youtube</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="right-details">
+        <div class="card">
+          <img [src]="article['urlToImage']" alt="Article" />
+          <p>
+            {{ article["description"] }}
+          </p>
+          <div>
+            <button class="btn btn-success">
+              <i class="fas fa-thumbs-up"></i> I find this helpful
+            </button>
+            <button class="btn btn-grey">
+              <i class="fas fa-thumbs-down"></i> I didn't find this helpful
+            </button>
+          </div>
+          <div class="comments">
+            <h2>Comments</h2>
+            <div class="card" *ngFor="let comment of comments">
+              <div class="flex-left">
+                <i class="fas fa-user fa-2x"></i>
+              </div>
+              <div class="flex-right">
+                <h4>
+                  {{ comment["userName"] }}
+                  <span class="date">{{ comment["date"] | date }}</span>
+                </h4>
+                <p>
+                  {{ comment["description"] }}
+                </p>
+              </div>
+            </div>
+            <h2>Join the conversation</h2>
+            <form>
+              <div class="form-control">
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Name"
+                  [(ngModel)]="obj.name"
+                />
+              </div>
+              <div class="form-control">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email"
+                  [(ngModel)]="obj.email"
+                />
+                <span class="after-email">Will not be published</span>
+              </div>
+              <div class="form-control">
+                <textarea
+                  name="message"
+                  id="message"
+                  cols="30"
+                  rows="10"
+                  placeholder="Message"
+                  [(ngModel)]="obj.message"
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                (click)="addToComments()"
+              >
+                Send
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
